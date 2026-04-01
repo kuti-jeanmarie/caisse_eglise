@@ -18,7 +18,7 @@ import model.entree;
  * @author User
  */
 public class entreeDAO {
-     // pour ajouter une entree
+    // pour ajouter une entree
     public boolean ajouterEntree (entree e){
         String sql = "INSERT INTO entree(montant, type_entree, date_entree, description) VALUES(?, ?, ?, ?)";
         
@@ -50,7 +50,7 @@ public class entreeDAO {
              ResultSet rs = st.executeQuery(sql)){
             
             while (rs.next()) {
-                entree e = new Entree (
+                Entree e = new Entree (
                     rs.getInt("id_entree"),
                     rs.getString("montant"),
                     rs.getString("type_entree"),
@@ -78,7 +78,7 @@ public class entreeDAO {
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
-                e = new entree(
+                e = new Entree(
                     rs.getInt("id"),
                     rs.getString("montant"),
                     rs.getString("typeEntree"),
@@ -108,7 +108,7 @@ public class entreeDAO {
         ps.setString(4, e.getDescription());
 
         // IMPORTANT
-        ps.setInt(5, e.getId_depense());
+        ps.setInt(5, e.getId_entree());
 
         int rows = ps.executeUpdate();
         return rows > 0;

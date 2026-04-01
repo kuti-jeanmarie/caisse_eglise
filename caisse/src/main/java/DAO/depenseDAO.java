@@ -22,7 +22,7 @@ public class depenseDAO {
     
     // pour ajouter une depense
     public boolean ajouterDepense (depense d){
-        String sql = "INSERT INTO Depense(montant, libelle, date_depense) VALUES(?, ?, ?)";
+        String sql = "INSERT INTO depense(montant, libelle, date_depense) VALUES(?, ?, ?)";
         
         try (Connection c = ConnectionBD.getConnection();        
             PreparedStatement ps = c.prepareStatement(sql)) {
@@ -41,8 +41,8 @@ public class depenseDAO {
     
     
         // pour lire toute la table depense
-    public List<Depense> listerDepense() {
-        List<Depense> liste = new ArrayList<>();
+    public List<depense> listerDepense() {
+        List<depense> liste = new ArrayList<>();
         
         String sql = "SELECT * FROM depense ";
         
@@ -51,15 +51,13 @@ public class depenseDAO {
              ResultSet rs = st.executeQuery(sql)){
             
             while (rs.next()) {
-                Depense d = new Depense (
+                Depense = new Depense (
                     rs.getInt("id_depense"),
                     rs.getString("montant"),
                     rs.getString("libelle"),
                     rs.getString("date_depense")
-
-    
                 );
-                liste.add(d);
+                liste.add(depense);
             }
             
         }catch (Exception ex){
@@ -70,9 +68,9 @@ public class depenseDAO {
     
     
     // pour afficher une depense à partir de son id
-    public Depense trouverparId(int id){
+    public depense trouverparId(int id){
         String sql = "SELECT * FROM depense WHERE id_depense = ? ";
-        Depense d = null;
+        depense d = null;
         
         try (Connection c = ConnectionBD.getConnection();
              PreparedStatement ps = c.prepareStatement(sql)){
@@ -81,7 +79,7 @@ public class depenseDAO {
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
-                d = new Depense(
+                d = new depense(
                     rs.getInt("id"),
                     rs.getString("montant"),
                     rs.getString("libelle"),
@@ -95,6 +93,75 @@ public class depenseDAO {
         return d;
     }
     
+    // pour modifier une depense
+    public boolean modifierDepense(depense d){
+
+    String sql = "UPDATE depense SET montant=?, libelle=?, date_depense=? WHERE id_depense=?";
+
+    try (Connection c = ConnectionBD.getConnection();
+         PreparedStatement ps = c.prepareStatement(sql)) {
+
+        ps.setString(1, d.getMontant());
+        ps.setString(2, d.getLibelle());
+        ps.setString(3, d.getDate_depense());
+
+        // IMPORTANT
+        ps.setInt(4, d.getId_depense());
+
+        int rows = ps.executeUpdate();
+        return rows > 0;
+
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+
+    return false;
+    }
     
-    
+    // pour supprimer une depense
+    public boolean supprimerDepense(int id){
+
+        String sql = "DELETE FROM depense WHERE id_depense = ?";
+
+        try(Connection c = ConnectionBD.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)){
+
+            ps.setInt(1, id);
+            int rows = ps.executeUpdate();
+            return rows > 0;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public List<Depense> getDepense() {
+
+        List<Depense> liste = new ArrayList<>();
+
+    try {
+        Connection c = ConnectionBD.getConnection();
+        String sql = "SELECT id_depense, montant, libelle FROM depense";
+        PreparedStatement ps = c.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+
+            Depense = new Depense(
+                rs.getInt("id_depense"),
+                rs.getString("montant"),
+                rs.getString("libelle")
+            );
+
+            liste.add(depense);
+        }
+
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+
+    return liste; 
+    }
 }
