@@ -27,21 +27,21 @@ public class membre extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        txtnom = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
-        jLabel3 = new javax.swing.JLabel();
+        txtprenom = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane2 = new javax.swing.JTextPane();
-        jLabel4 = new javax.swing.JLabel();
+        txttelephone = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextPane3 = new javax.swing.JTextPane();
-        jLabel5 = new javax.swing.JLabel();
+        txtsexe = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextPane4 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnajoutmembre = new javax.swing.JButton();
+        btnmodmembre = new javax.swing.JButton();
+        btnsupprimembre = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -54,33 +54,37 @@ public class membre extends javax.swing.JFrame {
         jLabel1.setText("Membre");
         jLabel1.setOpaque(true);
 
-        jLabel2.setText("Nom");
+        txtnom.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtnom.setText("Nom");
 
         jScrollPane1.setViewportView(jTextPane1);
 
-        jLabel3.setText("Prenom");
+        txtprenom.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtprenom.setText("Prenom");
 
         jScrollPane2.setViewportView(jTextPane2);
 
-        jLabel4.setText("Telephone");
+        txttelephone.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txttelephone.setText("Telephone");
 
         jScrollPane3.setViewportView(jTextPane3);
 
-        jLabel5.setText("Sexe");
+        txtsexe.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtsexe.setText("Sexe");
 
         jScrollPane4.setViewportView(jTextPane4);
 
-        jButton1.setBackground(new java.awt.Color(51, 153, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("Ajouter");
+        btnajoutmembre.setBackground(new java.awt.Color(51, 153, 0));
+        btnajoutmembre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnajoutmembre.setText("Ajouter");
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setText("Modifier");
+        btnmodmembre.setBackground(new java.awt.Color(0, 153, 255));
+        btnmodmembre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnmodmembre.setText("Modifier");
 
-        jButton3.setBackground(new java.awt.Color(255, 102, 102));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setText("Supprimer");
+        btnsupprimembre.setBackground(new java.awt.Color(255, 102, 102));
+        btnsupprimembre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnsupprimembre.setText("Supprimer");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,8 +108,8 @@ public class membre extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtnom, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtprenom, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -114,12 +118,12 @@ public class membre extends javax.swing.JFrame {
                                     .addComponent(jScrollPane2))
                                 .addGap(72, 72, 72)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtsexe, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txttelephone, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(btnajoutmembre)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                                .addComponent(jButton2)
+                                .addComponent(btnmodmembre)
                                 .addGap(55, 55, 55)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -128,7 +132,7 @@ public class membre extends javax.swing.JFrame {
                                     .addComponent(jScrollPane4))
                                 .addGap(83, 83, 83))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton3)
+                                .addComponent(btnsupprimembre)
                                 .addGap(111, 111, 111))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,20 +149,20 @@ public class membre extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane1)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel4)
+                        .addComponent(txtnom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txttelephone)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtprenom, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(txtsexe))
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnajoutmembre)
+                    .addComponent(btnmodmembre)
+                    .addComponent(btnsupprimembre))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -203,14 +207,10 @@ public class membre extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnajoutmembre;
+    private javax.swing.JButton btnmodmembre;
+    private javax.swing.JButton btnsupprimembre;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -221,5 +221,9 @@ public class membre extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextPane jTextPane4;
+    private javax.swing.JLabel txtnom;
+    private javax.swing.JLabel txtprenom;
+    private javax.swing.JLabel txtsexe;
+    private javax.swing.JLabel txttelephone;
     // End of variables declaration//GEN-END:variables
 }

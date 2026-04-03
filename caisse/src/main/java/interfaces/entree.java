@@ -27,21 +27,21 @@ public class entree extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        txtmontantentree = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
-        jLabel3 = new javax.swing.JLabel();
+        txttypeentree = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane2 = new javax.swing.JTextPane();
-        jLabel4 = new javax.swing.JLabel();
+        txtdateentree = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextPane3 = new javax.swing.JTextPane();
-        jLabel5 = new javax.swing.JLabel();
+        txtdescriptionentree = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextPane4 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnajoutentree = new javax.swing.JButton();
+        btnmodentree = new javax.swing.JButton();
+        btnsupprientree = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
@@ -54,39 +54,44 @@ public class entree extends javax.swing.JFrame {
         jLabel1.setText("Entree");
         jLabel1.setOpaque(true);
 
-        jLabel2.setText("Montant");
+        txtmontantentree.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtmontantentree.setText("Montant");
 
         jScrollPane1.setViewportView(jTextPane1);
 
-        jLabel3.setText("Type_Entree");
+        txttypeentree.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txttypeentree.setText("Type_Entree");
 
         jScrollPane2.setViewportView(jTextPane2);
 
-        jLabel4.setText("Date_Entree");
+        txtdateentree.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtdateentree.setText("Date_Entree");
 
         jScrollPane3.setViewportView(jTextPane3);
 
-        jLabel5.setText("Description");
+        txtdescriptionentree.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtdescriptionentree.setText("Description");
 
         jScrollPane4.setViewportView(jTextPane4);
 
-        jButton1.setBackground(new java.awt.Color(51, 153, 0));
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jButton1.setText("Ajouter");
+        btnajoutentree.setBackground(new java.awt.Color(51, 153, 0));
+        btnajoutentree.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnajoutentree.setText("Ajouter");
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 253));
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jButton2.setText("Modifier");
+        btnmodentree.setBackground(new java.awt.Color(0, 153, 253));
+        btnmodentree.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnmodentree.setText("Modifier");
 
-        jButton3.setBackground(new java.awt.Color(255, 102, 102));
-        jButton3.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jButton3.setText("Supprimer");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnsupprientree.setBackground(new java.awt.Color(255, 102, 102));
+        btnsupprientree.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnsupprientree.setText("Supprimer");
+        btnsupprientree.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnsupprientreeActionPerformed(evt);
             }
         });
 
+        jTable2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -111,8 +116,8 @@ public class entree extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))
+                            .addComponent(txtmontantentree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txttypeentree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -121,16 +126,16 @@ public class entree extends javax.swing.JFrame {
                                     .addComponent(jScrollPane1))
                                 .addGap(119, 119, 119)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(txtdateentree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtdescriptionentree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(45, 45, 45))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(btnajoutentree)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)
+                                .addComponent(btnmodentree)
                                 .addGap(79, 79, 79)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
+                            .addComponent(btnsupprientree)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                                 .addComponent(jScrollPane4)))
@@ -151,26 +156,26 @@ public class entree extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtmontantentree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txttypeentree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtdateentree, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtdescriptionentree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnajoutentree)
+                    .addComponent(btnmodentree)
+                    .addComponent(btnsupprientree))
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
@@ -179,9 +184,9 @@ public class entree extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnsupprientreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsupprientreeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnsupprientreeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,14 +224,10 @@ public class entree extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnajoutentree;
+    private javax.swing.JButton btnmodentree;
+    private javax.swing.JButton btnsupprientree;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -237,5 +238,9 @@ public class entree extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextPane jTextPane4;
+    private javax.swing.JLabel txtdateentree;
+    private javax.swing.JLabel txtdescriptionentree;
+    private javax.swing.JLabel txtmontantentree;
+    private javax.swing.JLabel txttypeentree;
     // End of variables declaration//GEN-END:variables
 }
