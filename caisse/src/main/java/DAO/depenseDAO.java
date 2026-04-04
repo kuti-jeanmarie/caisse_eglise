@@ -51,13 +51,13 @@ public class depenseDAO {
              ResultSet rs = st.executeQuery(sql)){
             
             while (rs.next()) {
-                Depense = new Depense (
+                depense d = new depense (
                     rs.getInt("id_depense"),
                     rs.getString("montant"),
                     rs.getString("libelle"),
                     rs.getString("date_depense")
                 );
-                liste.add(depense);
+                liste.add(d);
             }
             
         }catch (Exception ex){
@@ -80,10 +80,10 @@ public class depenseDAO {
             
             if(rs.next()){
                 d = new depense(
-                    rs.getInt("id"),
+                    rs.getInt("id_depense"),
                     rs.getString("montant"),
                     rs.getString("libelle"),
-                    rs.getString("dateDepense")
+                    rs.getString("date_depense")
                 );
             }
             
@@ -137,9 +137,9 @@ public class depenseDAO {
         return false;
     }
 
-    public List<Depense> getDepense() {
+    public List<depense> getDepense() {
 
-        List<Depense> liste = new ArrayList<>();
+        List<depense> liste = new ArrayList<>();
 
     try {
         Connection c = ConnectionBD.getConnection();
@@ -149,13 +149,13 @@ public class depenseDAO {
 
         while (rs.next()) {
 
-            Depense = new Depense(
+            depense d = new depense(
                 rs.getInt("id_depense"),
                 rs.getString("montant"),
                 rs.getString("libelle")
             );
 
-            liste.add(depense);
+            liste.add(d);
         }
 
     } catch (Exception ex) {

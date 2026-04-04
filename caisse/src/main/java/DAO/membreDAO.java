@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import model.entree;
+import model.membre;
 
 import model.membre;
 
@@ -51,7 +51,7 @@ public class membreDAO {
              ResultSet rs = st.executeQuery(sql)){
             
             while (rs.next()) {
-                membre m = new Membre (
+                membre m = new membre (
                     rs.getInt("id_membre"),
                     rs.getString("nom"),
                     rs.getString("prenom"),
@@ -79,7 +79,7 @@ public class membreDAO {
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
-                m = new Membre(
+                membre m = new membre(
                     rs.getInt("id"),
                     rs.getString("nom"),
                     rs.getString("prenom"),
@@ -153,13 +153,13 @@ public class membreDAO {
 
         while (rs.next()) {
 
-            membre = new Membre(
+            membre m = new membre(
                 rs.getInt("id_membre"),
                 rs.getString("nom"),
                 rs.getString("prenom")
             );
 
-            liste.add(membre);
+            liste.add(m);
         }
 
     } catch (Exception ex) {
