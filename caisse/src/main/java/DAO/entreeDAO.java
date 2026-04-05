@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import model.entree;
 
-import model.entree;
-
 /**
  *
  * @author User
@@ -50,12 +48,13 @@ public class entreeDAO {
              ResultSet rs = st.executeQuery(sql)){
             
             while (rs.next()) {
-                Entree e = new Entree (
+                entree e = new entree(
                     rs.getInt("id_entree"),
                     rs.getString("montant"),
                     rs.getString("type_entree"),
                     rs.getString("date_entree"),
-                    rs.getString("description")
+                    rs.getString("description"),
+                    rs.getInt("id_membre")
                 );
                 liste.add(e);
             }
@@ -78,12 +77,13 @@ public class entreeDAO {
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
-                e = new Entree(
-                    rs.getInt("id"),
+                e = new entree(
+                    rs.getInt("id_entree"),
                     rs.getString("montant"),
-                    rs.getString("typeEntree"),
-                    rs.getString("dateDepense"),
-                    rs.getString("description")
+                    rs.getString("type_entree"),
+                    rs.getString("date_entree"),
+                    rs.getString("description"),
+                    rs.getInt("id_membre")
                 );
             }
             
@@ -151,13 +151,16 @@ public class entreeDAO {
 
         while (rs.next()) {
 
-            entree = new entree(
-                rs.getInt("id_depense"),
+            entree e = new entree(
+                rs.getInt("id_entree"),
                 rs.getString("montant"),
-                rs.getString("libelle")
+                rs.getString("type_entree"),
+                rs.getString("date_entree"),
+                rs.getString("description"),
+                rs.getInt("id_membre")
             );
 
-            liste.add(entree);
+            liste.add(e);
         }
 
     } catch (Exception ex) {

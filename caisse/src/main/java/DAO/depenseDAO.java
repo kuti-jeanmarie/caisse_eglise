@@ -51,11 +51,12 @@ public class depenseDAO {
              ResultSet rs = st.executeQuery(sql)){
             
             while (rs.next()) {
-                depense d = new depense (
+                depense d = new depense(
                     rs.getInt("id_depense"),
                     rs.getString("montant"),
                     rs.getString("libelle"),
-                    rs.getString("date_depense")
+                    rs.getString("date_depense"),
+                    rs.getInt("id_membre")
                 );
                 liste.add(d);
             }
@@ -83,7 +84,8 @@ public class depenseDAO {
                     rs.getInt("id_depense"),
                     rs.getString("montant"),
                     rs.getString("libelle"),
-                    rs.getString("date_depense")
+                    rs.getString("date_depense"),
+                    rs.getInt("id_membre")
                 );
             }
             
@@ -152,7 +154,9 @@ public class depenseDAO {
             depense d = new depense(
                 rs.getInt("id_depense"),
                 rs.getString("montant"),
-                rs.getString("libelle")
+                rs.getString("libelle"),
+                rs.getString("date_depense"),
+                rs.getInt("id_membre")
             );
 
             liste.add(d);

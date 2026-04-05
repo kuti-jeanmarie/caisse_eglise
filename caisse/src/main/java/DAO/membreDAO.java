@@ -51,7 +51,7 @@ public class membreDAO {
              ResultSet rs = st.executeQuery(sql)){
             
             while (rs.next()) {
-                membre m = new membre (
+                membre m = new membre(
                     rs.getInt("id_membre"),
                     rs.getString("nom"),
                     rs.getString("prenom"),
@@ -79,7 +79,7 @@ public class membreDAO {
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
-                membre m = new membre(
+                m = new membre(
                     rs.getInt("id"),
                     rs.getString("nom"),
                     rs.getString("prenom"),
@@ -156,7 +156,9 @@ public class membreDAO {
             membre m = new membre(
                 rs.getInt("id_membre"),
                 rs.getString("nom"),
-                rs.getString("prenom")
+                rs.getString("prenom"),
+                rs.getString("telephone"),
+                rs.getString("sexe")
             );
 
             liste.add(m);

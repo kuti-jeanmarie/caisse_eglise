@@ -25,7 +25,7 @@ public class membre {
 
     }
     
-    public membre (int id_membre, String nom, String prenom ){
+    public membre (int id_membre, String nom, String prenom, String telephone, String sexe ){
         this.id_membre = id_membre;
         this.nom = nom;
         this.prenom = prenom;

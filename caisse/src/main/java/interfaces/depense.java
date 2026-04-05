@@ -4,6 +4,11 @@
  */
 package interfaces;
 
+
+import javax.swing.JOptionPane;
+import DAO.depenseDAO;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author User
@@ -68,6 +73,11 @@ public class depense extends javax.swing.JFrame {
         btnajoutdepense.setBackground(new java.awt.Color(51, 153, 0));
         btnajoutdepense.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         btnajoutdepense.setText("Ajouter");
+        btnajoutdepense.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnajoutdepenseActionPerformed(evt);
+            }
+        });
 
         btnmoddepense.setBackground(new java.awt.Color(0, 153, 253));
         btnmoddepense.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
@@ -159,6 +169,31 @@ public class depense extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnajoutdepenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnajoutdepenseActionPerformed
+        // TODO add your handling code here:
+        String montantDepense = txtmontantdepense.getText();
+        String libelleDepense = txtlibelledepense.getText();
+        String dateDepense = txtdatedepense.getText();
+        
+        
+        if (montantDepense.isEmpty() || libelleDepense.isEmpty() || dateDepense.isEmpty()){
+            
+            JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs ");
+        }else{
+            Depense depense = new Depense(montantDepense, libelleDepense, dateDepense );
+            
+            depenseDAO depensedao = new depenseDAO();
+            
+            if(depensedao.ajouterAbonne(depense)){
+                JOptionPane.showMessageDialog(this, "Abonné ajouté avec Succès !!");
+                
+                // vider les champs
+                clearFields();                
+                loadDepense();
+            }
+        }
+    }//GEN-LAST:event_btnajoutdepenseActionPerformed
 
     /**
      * @param args the command line arguments
