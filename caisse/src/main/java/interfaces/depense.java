@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import DAO.depenseDAO;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import model.Depense;
+import model.depense;
 /**
  *
  * @author User
@@ -24,11 +24,11 @@ public class depense extends javax.swing.JFrame {
     }
     
      private void initEvents(){
-        tableDepense.getSelectionModel().addListSelectionListener(e -> {
+        tabledepense.getSelectionModel().addListSelectionListener(e -> {
 
         if (!e.getValueIsAdjusting()) {
 
-            int row = tableDepense.getSelectedRow();
+            int row = tabledepense.getSelectedRow();
 
             if (row != -1) {
                 txtmontantdepense.setText(tableDepense.getValueAt(row, 1).toString());
