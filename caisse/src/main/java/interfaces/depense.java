@@ -5,11 +5,11 @@
 package interfaces;
 
 
-import javax.swing.JOptionPane;
 import DAO.depenseDAO;
+import model.Depense;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.depense;
 /**
  *
  * @author User
@@ -21,18 +21,20 @@ public class depense extends javax.swing.JFrame {
      */
     public depense() {
         initComponents();
+        initEvents();
+        loadDepense()
     }
     
      private void initEvents(){
-        tabledepense.getSelectionModel().addListSelectionListener(e -> {
+        tableDepense.getSelectionModel().addListSelectionListener(e -> {
 
         if (!e.getValueIsAdjusting()) {
 
-            int row = tabledepense.getSelectedRow();
+            int row = tableDepense.getSelectedRow();
 
             if (row != -1) {
                 txtmontantdepense.setText(tableDepense.getValueAt(row, 1).toString());
-                txtlibelledepense.setText(tabledepense.getValueAt(row, 2).toString());
+                txtlibelledepense.setText(tableDepense.getValueAt(row, 2).toString());
                 txtdatedepense.setText(tableDepense.getValueAt(row, 3).toString());
             }
         }
