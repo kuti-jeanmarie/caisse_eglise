@@ -6,7 +6,7 @@ package interfaces;
 
 
 import DAO.depenseDAO;
-import model.Depense;
+import model.depense;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +22,6 @@ public class depense extends javax.swing.JFrame {
     public depense() {
         initComponents();
         initEvents();
-        loadDepense()
     }
     
      private void initEvents(){
@@ -101,10 +100,20 @@ public class depense extends javax.swing.JFrame {
         btnmoddepense.setBackground(new java.awt.Color(0, 153, 253));
         btnmoddepense.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         btnmoddepense.setText("Modifier");
+        btnmoddepense.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmoddepenseActionPerformed(evt);
+            }
+        });
 
         btnsuppridepense.setBackground(new java.awt.Color(255, 102, 102));
         btnsuppridepense.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         btnsuppridepense.setText("Supprimer");
+        btnsuppridepense.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsuppridepenseActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -200,12 +209,12 @@ public class depense extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs ");
         }else{
-            Depense depense = new Depense(montantDepense, libelleDepense, dateDepense );
+            depense depense = new Depense(montantDepense, libelleDepense, dateDepense );
             
             depenseDAO depensedao = new depenseDAO();
             
-            if(depensedao.ajouterAbonne(depense)){
-                JOptionPane.showMessageDialog(this, "Abonné ajouté avec Succès !!");
+            if(depensedao.ajouterDepense(depense)){
+                JOptionPane.showMessageDialog(this, "Dépense ajouté avec Succès !!");
                 
                 // vider les champs
                 clearFields();                
@@ -213,6 +222,96 @@ public class depense extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnajoutdepenseActionPerformed
+
+    private void btnsuppridepenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuppridepenseActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tabledepense.getSelectedRow();
+        
+        if (selectedRow == -1){
+            JOptionPane.showMessageDialog(this, "Veuillez selectionner une Dépense");
+            return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tabledepense.getModel();
+        
+        int id = (int) model.getValueAt(selectedRow, 0);
+        
+        int confirmation = JOptionPane.showConfirmDialog(this, "Voulez vous vraiment supprimer cette Depense ?",
+                "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (confirmation == JOptionPane.YES_OPTION){
+            depenseDAO depensedao = new depenseDAO();
+            boolean success = depensedao.supprimerDepense(id);
+            
+            if(success){
+                model.removeRow(selectedRow);
+                JOptionPane.showMessageDialog(this, "Dépense Supprimé avec Succès !");
+                
+                loaddepense();
+                clearFields();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Erreur lors de la suppression!!");
+            }
+        }                                            
+    }//GEN-LAST:event_btnsuppridepenseActionPerformed
+
+    private void btnmoddepenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmoddepenseActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tableDepense.getSelectedRow();
+        
+         // Récupérer le vrai ID depuis la première colonne du JTable
+        DefaultTableModel model = (DefaultTableModel) tableDepense.getModel();
+        int id = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+        
+        if (selectedRow == -1){
+            JOptionPane.showMessageDialog(this, "Veuillez selectionner un abonnés");
+            return;
+        }
+        
+        depense depense = new Depense();
+        depense.setIdDepense(id);
+        depense.setMontant(txtmontantdepense.getText());
+        depense.setLibelle(txtlibelledepense.getText());
+        depense.setDateDepense(txtdatedepense.getText());
+        
+        depenseDAO depensedao = new depenseDAO();
+        boolean success = depensedao.modifierDepense(depense);
+        
+        if(success){
+            JOptionPane.showMessageDialog(this, "Dépense Modifier avec succès");
+            loadDepenses();
+            clearFields();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Erreur lors de la modification");
+        }
+        
+    }                                         
+
+    private void btnAjouterActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        String montantDepense = txtmontantdepense.getText();
+        String libelleDepense = txtlibelledepense.getText();
+        String dateDepense = txtdatedepense.getText();
+        
+        if (montantDepense.isEmpty() || libelleDepense.isEmpty() || dateDepense.isEmpty()){
+            
+            JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs ");
+        }else{
+            depense depense = new depense(montantDepense, libelleDepense, dateDepense, id_membre);
+            
+            depenseDAO depensedao = new depenseDAO();
+            
+            if(depensedao.ajouterDepense(depense)){
+                JOptionPane.showMessageDialog(this, "Depense ajouté avec Succès !!");
+                
+                // vider les champs
+                clearFields();                
+                loadDepenses();
+            }
+        }                                         
+
+    }//GEN-LAST:event_btnmoddepenseActionPerformed
 
     /**
      * @param args the command line arguments
