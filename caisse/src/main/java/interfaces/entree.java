@@ -4,6 +4,11 @@
  */
 package interfaces;
 
+import DAO.depenseDAO;
+import DAO.entreeDAO;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author User
@@ -77,10 +82,20 @@ public class entree extends javax.swing.JFrame {
         btnajoutentree.setBackground(new java.awt.Color(51, 153, 0));
         btnajoutentree.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         btnajoutentree.setText("Ajouter");
+        btnajoutentree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnajoutentreeActionPerformed(evt);
+            }
+        });
 
         btnmodentree.setBackground(new java.awt.Color(0, 153, 253));
         btnmodentree.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         btnmodentree.setText("Modifier");
+        btnmodentree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmodentreeActionPerformed(evt);
+            }
+        });
 
         btnsupprientree.setBackground(new java.awt.Color(255, 102, 102));
         btnsupprientree.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
@@ -186,7 +201,97 @@ public class entree extends javax.swing.JFrame {
 
     private void btnsupprientreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsupprientreeActionPerformed
         // TODO add your handling code here:
+         int selectedRow = tableEntree.getSelectedRow();
+        
+        if (selectedRow == -1){
+            JOptionPane.showMessageDialog(this, "Veuillez selectionner une Entrée");
+            return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tableEntree.getModel();
+        
+        int id = (int) model.getValueAt(selectedRow, 0);
+        
+        int confirmation = JOptionPane.showConfirmDialog(this, "Voulez vous vraiment supprimer cette Entrée ?",
+                "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (confirmation == JOptionPane.YES_OPTION){
+            entreeDAO entreedao = new entreeDAO();
+            boolean success = entreedao.supprimerEntree(id);
+            
+            if(success){
+                model.removeRow(selectedRow);
+                JOptionPane.showMessageDialog(this, "Entrée Supprimé avec Succès !");
+                
+                loaddEntree();
+                clearFields();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Erreur lors de la suppression!!");
+            }
+        }                                                                                           
+
     }//GEN-LAST:event_btnsupprientreeActionPerformed
+
+    private void btnajoutentreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnajoutentreeActionPerformed
+        // TODO add your handling code here:
+        String montantEntree = txtmontantentree.getText();
+        String typeEntree = txttypeentree.getText();
+        String dateEntree = txtdateentree.getText();
+        String description = txtdescriptionentree.getText();
+        
+        
+        if (montantEntree.isEmpty() || typeEntree.isEmpty() || dateEntree.isEmpty() || description.isEmpty()){
+            
+            JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs ");
+        }else{
+            model.entree entree = new Entree(montantEntree, typeEntree, dateEntree, description);
+            
+            entreeDAO entreedao = new entreeDAO();
+            
+            if(entreedao.ajouterEntree(entree)){
+                JOptionPane.showMessageDialog(this, "Entrée ajouté avec Succès !!");
+                
+                // vider les champs
+                clearFields();                
+                loadEntree();
+            }
+        }
+                                                   
+    }//GEN-LAST:event_btnajoutentreeActionPerformed
+
+    private void btnmodentreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodentreeActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tableEntree.getSelectedRow();
+        
+         // Récupérer le vrai ID depuis la première colonne du JTable
+        DefaultTableModel model = (DefaultTableModel) tableEntree.getModel();
+        int id = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+        
+        if (selectedRow == -1){
+            JOptionPane.showMessageDialog(this, "Veuillez selectionner une entrée");
+            return;
+        }
+        
+        model.entree entree = new Entree();
+        entree.setId_entree(id);
+        entree.setMontant(txtmontantentree.getText());
+        entree.setType_entree(txttypeentree.getText());
+        entree.setDate_entree(txtdateentree.getText());
+        entree.setDescription(txtdescriptionentree.getText());
+        
+        entreeDAO entreedao = new entreeDAO();
+        boolean success = entreedao.modifierEntree(entree);
+        
+        if(success){
+            JOptionPane.showMessageDialog(this, "Entrée Modifier avec succès");
+            loadEntree();
+            clearFields();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Erreur lors de la modification");
+        }
+        
+    }//GEN-LAST:event_btnmodentreeActionPerformed
 
     /**
      * @param args the command line arguments

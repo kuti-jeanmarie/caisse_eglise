@@ -221,6 +221,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Ajouter"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnajoutentreeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnmodentree">
       <Properties>
@@ -232,6 +235,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Modifier"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnmodentreeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnsupprientree">
       <Properties>
