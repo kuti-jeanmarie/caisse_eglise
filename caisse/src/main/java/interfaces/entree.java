@@ -5,7 +5,10 @@
 package interfaces;
 
 import DAO.depenseDAO;
+import model.depense;
 import DAO.entreeDAO;
+import java.util.List;
+import model.entree;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,6 +23,61 @@ public class entree extends javax.swing.JFrame {
      */
     public entree() {
         initComponents();
+        initEvents();
+        loadEntree();
+    }
+    
+    
+        private void initEvents() {
+
+            tableEntree.getSelectionModel().addListSelectionListener(e -> {
+
+            if (!e.getValueIsAdjusting()) {
+
+                int row = tableEntree.getSelectedRow();
+
+                if (row != -1) {
+                    txtmontantentree.setText(tableEntree.getValueAt(row, 1).toString());
+                    txttypeentree.setText(tableEntree.getValueAt(row, 2).toString());
+                    txtdateentree.setText(tableEntree.getValueAt(row, 3).toString());
+                    txtdescriptionentree.setText(tableEntree.getValueAt(row, 4).toString());
+                
+                }
+            }
+            
+        });
+       
+    }
+        
+    private void loadEntree() {
+        DefaultTableModel model = (DefaultTableModel) tableEntree.getModel();
+
+        model.setRowCount(0); // vider la table
+
+        entreeDAO entreedao = new entreeDAO();
+        List<entree> liste = entreedao.listerEntree();
+
+        for (entree e : liste) {
+            model.addRow(new Object[]{
+                e.getId_entree(),
+                e.getMontant(),
+                e.getType_entree(),
+                e.getDate_entree(),
+                e.getDescription(),
+                    
+        });
+    }
+        
+        
+    private void clearFields(){
+        txtmontantentree.setText("");
+        txttypeentree.setText("");
+        txtdateentree.setText("");
+        txtdescriptionentree.setText("");
+        
+        tableEntree.clearSelection();
+        txtmontantentree.requestFocus();
+    
     }
 
     /**

@@ -6,6 +6,7 @@ package interfaces;
 
 
 import DAO.depenseDAO;
+import DAO.entreeDAO;
 import model.depense;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -24,7 +25,7 @@ public class depense extends javax.swing.JFrame {
         initEvents();
     }
     
-     private void initEvents(){
+        private void initEvents(){
         tableDepense.getSelectionModel().addListSelectionListener(e -> {
 
         if (!e.getValueIsAdjusting()) {
@@ -39,6 +40,36 @@ public class depense extends javax.swing.JFrame {
         }
     });
     }
+        
+    
+    private void loadEntree() {
+        DefaultTableModel model = (DefaultTableModel) tableDepense.getModel();
+
+        model.setRowCount(0); // vider la table
+
+        depenseDAO depensedao = new depenseDAO();
+        List<model.depense> liste = depensedao.listerDepense();
+
+        for (model.depense d : liste) {
+            model.addRow(new Object[]{
+                d.getId_depense(),
+                d.getMontant(),
+                d.getLibelle(),
+                d.getDate_depense(),            
+        });
+    }
+        
+        
+    private void clearFields(){
+        txtmontantdepense.setText("");
+        txtlibelledepense.setText("");
+        txtdatedepense.setText("");
+        
+        tableDepense.clearSelection();
+        txtmontantdepense.requestFocus();
+    
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -269,10 +300,10 @@ public class depense extends javax.swing.JFrame {
         }
         
         depense depense = new Depense();
-        depense.setIdDepense(id);
+        depense.setId_depense(id);
         depense.setMontant(txtmontantdepense.getText());
         depense.setLibelle(txtlibelledepense.getText());
-        depense.setDateDepense(txtdatedepense.getText());
+        depense.setDate_depense(txtdatedepense.getText());
         
         depenseDAO depensedao = new depenseDAO();
         boolean success = depensedao.modifierDepense(depense);
