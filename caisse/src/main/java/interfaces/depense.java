@@ -15,12 +15,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author User
  */
-public class depense extends javax.swing.JFrame {
+public class DepenseForm extends javax.swing.JFrame {
 
     /**
      * Creates new form depense
      */
-    public depense() {
+    public DepenseForm() {
         initComponents();
         initEvents();
     }
@@ -42,7 +42,7 @@ public class depense extends javax.swing.JFrame {
     }
         
     
-    private void loadEntree() {
+    private void loadDepense() {
         DefaultTableModel model = (DefaultTableModel) tableDepense.getModel();
 
         model.setRowCount(0); // vider la table
@@ -56,7 +56,8 @@ public class depense extends javax.swing.JFrame {
                 d.getMontant(),
                 d.getLibelle(),
                 d.getDate_depense(),            
-        });
+            });
+        }    
     }
         
         
@@ -240,7 +241,7 @@ public class depense extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs ");
         }else{
-            depense depense = new Depense(montantDepense, libelleDepense, dateDepense );
+            Depense depense = new Depense(montantDepense, libelleDepense, dateDepense );
             
             depenseDAO depensedao = new depenseDAO();
             
@@ -256,7 +257,7 @@ public class depense extends javax.swing.JFrame {
 
     private void btnsuppridepenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuppridepenseActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tabledepense.getSelectedRow();
+        int selectedRow = tableDepense.getSelectedRow();
         
         if (selectedRow == -1){
             JOptionPane.showMessageDialog(this, "Veuillez selectionner une Dépense");
@@ -277,7 +278,7 @@ public class depense extends javax.swing.JFrame {
                 model.removeRow(selectedRow);
                 JOptionPane.showMessageDialog(this, "Dépense Supprimé avec Succès !");
                 
-                loaddepense();
+                loadDepense();
                 clearFields();
             }
             else{
@@ -295,7 +296,7 @@ public class depense extends javax.swing.JFrame {
         int id = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
         
         if (selectedRow == -1){
-            JOptionPane.showMessageDialog(this, "Veuillez selectionner un abonnés");
+            JOptionPane.showMessageDialog(this, "Veuillez selectionner une depense");
             return;
         }
         
@@ -310,7 +311,7 @@ public class depense extends javax.swing.JFrame {
         
         if(success){
             JOptionPane.showMessageDialog(this, "Dépense Modifier avec succès");
-            loadDepenses();
+            loadDepense();
             clearFields();
         }
         else{
@@ -329,7 +330,7 @@ public class depense extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs ");
         }else{
-            depense depense = new depense(montantDepense, libelleDepense, dateDepense, id_membre);
+            Depense depense = new Depense(montantDepense, libelleDepense, dateDepense);
             
             depenseDAO depensedao = new depenseDAO();
             
@@ -338,7 +339,7 @@ public class depense extends javax.swing.JFrame {
                 
                 // vider les champs
                 clearFields();                
-                loadDepenses();
+                loadDepense();
             }
         }                                         
 
@@ -374,7 +375,7 @@ public class depense extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new depense().setVisible(true);
+                new Depense().setVisible(true);
             }
         });
     }

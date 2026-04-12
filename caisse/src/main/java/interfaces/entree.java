@@ -5,7 +5,6 @@
 package interfaces;
 
 import DAO.depenseDAO;
-import model.depense;
 import DAO.entreeDAO;
 import java.util.List;
 import model.entree;
@@ -16,12 +15,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author User
  */
-public class entree extends javax.swing.JFrame {
+public class EntreeForm extends javax.swing.JFrame {
 
     /**
      * Creates new form entree
      */
-    public entree() {
+    public EntreeForm() {
         initComponents();
         initEvents();
         loadEntree();
@@ -63,9 +62,9 @@ public class entree extends javax.swing.JFrame {
                 e.getMontant(),
                 e.getType_entree(),
                 e.getDate_entree(),
-                e.getDescription(),
-                    
-        });
+                e.getDescription(),        
+            });
+        }
     }
         
         
@@ -92,7 +91,7 @@ public class entree extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtmontantentree = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        JTextField = new javax.swing.JTextPane();
         txttypeentree = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane2 = new javax.swing.JTextPane();
@@ -120,7 +119,7 @@ public class entree extends javax.swing.JFrame {
         txtmontantentree.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         txtmontantentree.setText("Montant");
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(JTextField);
 
         txttypeentree.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         txttypeentree.setText("Type_Entree");
@@ -280,7 +279,7 @@ public class entree extends javax.swing.JFrame {
                 model.removeRow(selectedRow);
                 JOptionPane.showMessageDialog(this, "Entrée Supprimé avec Succès !");
                 
-                loaddEntree();
+                loadEntree();
                 clearFields();
             }
             else{
@@ -302,7 +301,7 @@ public class entree extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs ");
         }else{
-            model.entree entree = new Entree(montantEntree, typeEntree, dateEntree, description);
+            model.entree entree = new entree(montantEntree, typeEntree, dateEntree, description);
             
             entreeDAO entreedao = new entreeDAO();
             
@@ -330,7 +329,7 @@ public class entree extends javax.swing.JFrame {
             return;
         }
         
-        model.entree entree = new Entree();
+        model.entree entree = new entree();
         entree.setId_entree(id);
         entree.setMontant(txtmontantentree.getText());
         entree.setType_entree(txttypeentree.getText());
@@ -381,12 +380,13 @@ public class entree extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new entree().setVisible(true);
+                new EntreeForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextPane JTextField;
     private javax.swing.JButton btnajoutentree;
     private javax.swing.JButton btnmodentree;
     private javax.swing.JButton btnsupprientree;
@@ -397,7 +397,6 @@ public class entree extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextPane jTextPane4;
